@@ -317,7 +317,7 @@ class ModuleNameSubnetMask(SubnetMask):
         self._check_module_names()
 
         subnet_mask_list = []
-        for name, module in self.model.named_modules():
+        for name, module in self.model.named_modules(remove_duplicate=False):
             if len(list(module.children())) > 0 or len(list(module.parameters())) == 0:
                 continue
             if name in self._module_names:
